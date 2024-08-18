@@ -29,19 +29,19 @@ ENV PATH=${PATH}:/home/jellyfin/tizen-studio/tools/ide/bin:/home/jellyfin/tizen-
 # Create certificates
 RUN tizen \
     certificate \
-        -a Jellyfin \
-        -p 1234 \
-        -c SG \
-        -ct SG \
-        -n Jellyfin \  
-        -f Jellyfin
+    -a Jellyfin \
+    -p 1234 \
+    -c SG \
+    -ct SG \
+    -n Jellyfin \  
+    -f Jellyfin
 
 # Load profile
 RUN tizen \
     security-profiles add \
-        -n Jellyfin \
-        -a /home/jellyfin/tizen-studio-data/keystore/author/Jellyfin.p12 \
-        -p 1234
+    -n Jellyfin \
+    -a /home/jellyfin/tizen-studio-data/keystore/author/Jellyfin.p12 \
+    -p 1234
 
 # Switch passwords
 RUN sed -i 's/\/home\/jellyfin\/tizen-studio-data\/keystore\/author\/Jellyfin.pwd//' /home/jellyfin/tizen-studio-data/profile/profiles.xml
@@ -68,6 +68,6 @@ RUN chmod a+x /home/jellyfin/jellyfin-tizen/expect.sh
 
 RUN ./expect.sh
 
-ENV TV_IP=127.0.0.1
+ENV TV_IP=192.168.50.89
 
 # ENTRYPOINT ["tail", "-f", "/dev/null"]
